@@ -11,6 +11,7 @@
         "src": "/(.*)",
         "dest": "index.js"
       }
-    ]
+    ],
+    "devCommand": "node index.js"
   }
   
