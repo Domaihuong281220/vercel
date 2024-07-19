@@ -3,7 +3,9 @@ const app = express();
 const port = 3006;
 const cors = require('cors');
 
+
 const TelegramBot = require('node-telegram-bot-api');
+const { upload } = require('./multer');
 
 
 app.use(cors({
@@ -12,6 +14,10 @@ app.use(cors({
 
 app.get('/', (req, res) => {
   res.json({ message: 'Hello World!' });
+});
+
+app.post('/send',upload.single('image'), (req, res) => {
+  console.log(req.file);
 });
 
 
