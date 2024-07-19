@@ -1,6 +1,5 @@
 const multer = require('multer');
 // const {GridFsStorage} = require('multer-gridfs-storage');
-require("dotenv/config");
 const crypto = require("crypto");
 const path = require("path");
 const fs = require('fs');
