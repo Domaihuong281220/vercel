@@ -11,13 +11,15 @@ const { upload } = require('./multer');
 app.use(cors({
   origin: '*'
 }));
+app.use(express.static('upload'));
 
 app.get('/', (req, res) => {
   res.json({ message: 'Hello World!' });
 });
 
 app.post('/send',upload.single('image'), (req, res) => {
-  console.log(req.file);
+  const imagePath = req.file.path.replace(/ /g, "%20");
+  res.json({ message: imagePath });
 });
 
 
