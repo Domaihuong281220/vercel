@@ -40,6 +40,25 @@ app.get("/api/exercise", (req, res) => {
   res.json(exerciseData);
 });
 
+app.post("/api/submit", (req, res) => {
+  console.log("Received answers:", req.body.answers);
+
+  const { answers } = req.body;
+
+  // Check the number of correct answers
+  let correctCount = 0;
+  answers.forEach((answer, index) => {
+    if (answer === exerciseData.question.blanks[index].correctAnswer) {
+      correctCount++;
+    }
+  });
+
+  const isCorrect = correctCount === exerciseData.question.blanks.length;
+  const message = isCorrect ? "Correct!" : "Try Again!";
+
+  res.json({ message, correctCount });
+});
+
 app.get('/', (req, res) => {
   res.json({ message: 'Hello World1!' });
 });
