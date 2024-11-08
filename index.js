@@ -21,7 +21,7 @@ app.listen(port, () => {
 
 
 app.get('/', (req, res) => {
-  res.json({ message: 'Hello World!' });
+  res.json({ message: 'Hello World1!' });
 });
 
 app.post('/send', upload.single('image'), (req, res) => {
